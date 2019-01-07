@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ThanksGivingHall</string>
+    <string name="app_title">华夏感恩堂办公系统</string>
+    <string name="app_introduce">仁者爱人、义利并举、崇德向善、尊道贵德</string>
+    <string name="user">请输入用户名</string>
+    <string name="password">请输入密码</string>
+    <string name="app_version">V1.0_20190105</string>
+    <string name="change_pw">修改密码</string>
+
+    <string name="cancel">取消</string>
+    <string name="ok">确认</string>
+    <string name="hint">提示</string>
+
+    <string name="login_activity_input_username_toast">用户名不能为空</string>
+    <string name="login_activity_input_password_toast">密码不能为空</string>
+    <string name="login_activity_input_password_error_toast">密码位数应为6位至20位</string>
+    <string name="login_activity_logining_toast">正在登陆...</string>
+
+    <string name="login_activity_setting_toast">请先进行系统配置</string>
+    <string name="login_activity_loginfail_sever_toast">访问服务器异常</string>
+    <string name="login_activity_loginfail_network">当前网络不可用，请检查您的网络设置</string>
+
+    <string name="login_error_0001">登陆失败</string>
+    <string name="login_error_0002">账号不存在</string>
+    <string name="login_error_0003">密码错误</string>
+    <string name="login_error_0004">密码已失效</string>
+    <string name="login_error_0005">协议格式错误或参数缺失</string>
+    <string name="login_error_0006">数据库操作错误</string>
+    <string name="login_error_0007">账号已被禁用</string>
+
+    <string name="login_activity_loading_null">数据为空</string>
+    <string name="login_activity_loginfail_toast">访问服务器异常</string>
+    <string name="login_activity_loading_fail_toast">数据获取失败</string>
+</resources>
