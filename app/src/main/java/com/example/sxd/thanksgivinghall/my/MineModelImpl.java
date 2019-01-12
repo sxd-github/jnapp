@@ -20,7 +20,7 @@ public class MineModelImpl implements MineContract.Model {
     }
     @Override
     public void userInfo(String userAccount, final ResultListener<UserInfoEntity> result) {
-        Call<UserInfoEntity> call = AppMainService.getLoginService(baseUrl).userInfo(userAccount);
+        Call<UserInfoEntity> call = AppMainService.getLoginService(baseUrl).userInfos(userAccount);
         //请求开始
         result.onStart();
         //执行操作

@@ -44,7 +44,7 @@ dependencies {
 
     //BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     //bottom-bar
     api('com.roughike:bottom-bar:2.3.1') { exclude group: 'com.android.support' }
@@ -59,4 +59,9 @@ dependencies {
     //系统更新
     implementation 'com.qiangxi.checkupdatelibrary:checkupdatelibrary:1.1.3@aar'
     implementation 'com.blankj:utilcode:1.3.3'
+
+    //知乎开源Matisse图片选择器
+   // implementation 'com.zhihu.android:matisse:0.5.2-beta4'
+
+    implementation project(':MultilevelTreeLibrary')
 }

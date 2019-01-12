@@ -2,16 +2,13 @@ package com.example.sxd.thanksgivinghall.login;
 
 import android.content.Context;
 
-import com.example.sxd.thanksgivinghall.bean.Constants;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.base.BasePresenterImpl;
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.UserInfoEntity;
-import com.example.sxd.thanksgivinghall.bean.UserLoginEntity;
 import com.example.sxd.thanksgivinghall.utils.NetUtil;
-import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
 import com.example.sxd.thanksgivinghall.utils.StringUtils;
-import com.blankj.utilcode.utils.EncryptUtils;
 
 /**
  * Created by Administrator on 2018/3/13.
@@ -43,13 +40,13 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginContra
             return;
         }
         //密码MD5加密 或者MD5.md5(password）
-        password = EncryptUtils.encryptMD5ToString(password.getBytes()).toLowerCase();
+  //      password = EncryptUtils.encryptMD5ToString(password.getBytes()).toLowerCase();
         System.out.println(password);
         if(!NetUtil.isNetworkAvailable(context)){
             this.mView.showMessage(context.getString(R.string.login_activity_loginfail_network));
             return;
         }
-        this.mModel.login(useraccount, password, new ResultListener<UserLoginEntity>() {
+        this.mModel.login(useraccount, password, new ResultListener<Base>() {
             @Override
             public void onStart() {
                 mView.showMessage(context.getString(R.string.login_activity_logining_toast));
@@ -60,36 +57,15 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginContra
             }
 
             @Override
-            public void onSuccess(UserLoginEntity data) {
+            public void onSuccess(Base data) {
                 if (data != null) {
-                    switch (data.getStatusCode()){
-                        case "0000":
-                            mView.loginSuccess(data);
-                            break;
-                        case "0001":
-                            mView.showMessage(context.getString(R.string.login_error_0001));
-                            break;
-                        case "0002":
-                            mView.showMessage(context.getString(R.string.login_error_0002));
-                            break;
-                        case "0003":
-                            mView.showMessage(context.getString(R.string.login_error_0003));
-                            break;
-                        case "0004":
-                            mView.showMessage(context.getString(R.string.login_error_0004));
-                            break;
-                        case "0005":
-                            mView.showMessage(context.getString(R.string.login_error_0005));
-                            break;
-                        case "0006":
-                            mView.showMessage(context.getString(R.string.login_error_0006));
-                            break;
-                        case "0007":
-                            mView.showMessage(context.getString(R.string.login_error_0007));
-                            break;
+                    if(data.getSuccess().equals("true")){
+                        mView.loginSuccess(data);
+                    }else {
+                        mView.showMessage(data.getStatusMessage());
                     }
                 } else {
-                    mView.showMessage(context.getString(R.string.login_activity_loginfail_toast));
+                    mView.showMessage(context.getString(R.string.login_error));
                 }
             }
 
@@ -100,9 +76,10 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginContra
         });
     }
 
+
     @Override
-    public void getUserInfo(String useraccount) {
-        this.mModel.userInfo(useraccount, new ResultListener<UserInfoEntity>() {
+    public void getUserInfos(String username) {
+        this.mModel.userInfos(username, new ResultListener<UserInfoEntity>() {
             @Override
             public void onStart() {
             }
@@ -114,14 +91,7 @@ public class LoginPresenterImpl extends BasePresenterImpl implements LoginContra
             @Override
             public void onSuccess(UserInfoEntity data) {
                 if (data != null) {
-                    switch (data.getStatusCode()) {
-                        case "0000":
-                            mView.getUserInfo(data);
-                            break;
-                        default:
-                            mView.showMessage(context.getString(R.string.login_activity_loading_fail_toast));
-                            break;
-                    }
+                    mView.getUserInfos(data);
                 }
             }
 

@@ -1,7 +1,7 @@
 package com.example.sxd.thanksgivinghall.api.service;
 
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.UserInfoEntity;
-import com.example.sxd.thanksgivinghall.bean.UserLoginEntity;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,21 +13,28 @@ import retrofit2.http.Query;
 
 public abstract interface LoginService {
 
-    /**
+    /***
      * 用户登录
-     * @param userAccount  用户账号
-     * @param password      密码
+     * @param userName
      * @return
      */
-    @GET("appUser/userLogin")
-    Call<UserLoginEntity> userLogin(@Query("userAccount") String userAccount, @Query("password") String password);
+    @GET("infc/infclogin/userLogin")
+    Call<Base> userLogin(@Query("userName") String userName, @Query("password") String password);
 
     /**
      * 用户信息
-     * @param userAccount  用户账号
+     * @param userName  用户账号
      * @return
      */
-    @GET("appUser/getUserInfo")
-    Call<UserInfoEntity> userInfo(@Query("userAccount") String userAccount);
+    @GET("infc/infcuser/getUserInfo")
+    Call<UserInfoEntity> userInfos(@Query("userName") String userName);
+
+    /**
+     * 更新密码
+     * @param userName  用户账号
+     * @return
+     */
+    @GET("infc/infcuser/updatePassword")
+    Call<Base> updatePassword(@Query("userName") String userName,@Query("oldPassword") String oldPassword,@Query("newPassword") String newPassword);
 
 }

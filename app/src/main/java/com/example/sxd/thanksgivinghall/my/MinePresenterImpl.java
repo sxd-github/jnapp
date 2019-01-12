@@ -35,14 +35,7 @@ public class MinePresenterImpl extends BasePresenterImpl implements MineContract
             @Override
             public void onSuccess(UserInfoEntity data) {
                 if (data != null) {
-                    switch (data.getStatusCode()) {
-                        case "0000":
-                            mView.getUserInfo(data);
-                            break;
-                        default:
-                            mView.showMessage(context.getString(R.string.login_activity_loading_null));
-                            break;
-                    }
+                    mView.getUserInfo(data);
                 }
             }
 

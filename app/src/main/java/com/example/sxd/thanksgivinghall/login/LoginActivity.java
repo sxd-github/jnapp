@@ -16,10 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sxd.thanksgivinghall.MainFragment;
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.Constants;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.bean.UserInfoEntity;
-import com.example.sxd.thanksgivinghall.bean.UserLoginEntity;
 import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
 
 import butterknife.BindView;
@@ -27,14 +27,6 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View{
 
-    //retrofit  restful api
-    //butterkinfe
-    //google mvp
-    //百度地图+极光推送
-    //toolbar
-    //
-    @BindView(R.id.tv_changePw)
-    TextView tvChangePw;
     @BindView(R.id.logon_et_username)
     EditText tvUsername;
     @BindView(R.id.logon_et_password)
@@ -55,20 +47,39 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setContentView(R.layout.activity_log_on);
         ButterKnife.bind(this);
 
+        //沉浸式状态栏
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
-//        Utils.init(this);
+
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
+
+        //将IP和PORT存入SharedPreferences
+        SharedPreUtils.putString(LoginActivity.this, Constants.SP_IP,"192.168.2.107");
+        SharedPreUtils.putString(LoginActivity.this, Constants.SP_PORT,"8080");
+
+        //获取SharedPreferences中存储的登录账号和密码
         tvUsername.setText(SharedPreUtils.getString(LoginActivity.this, Constants.SP_LOGIN_ACCOUNT));
         tvPassword.setText(SharedPreUtils.getString(LoginActivity.this, Constants.SP_LOGIN_PASSWORD));
+
+        //初始化
         initView();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //在系统配置成功后再次获取IP地址
+        mPresenter = new LoginPresenterImpl(LoginActivity.this, this);
+        if(SharedPreUtils.getBoolean(LoginActivity.this, Constants.SP_LOGIN_IS_LOG_IN)){
+            returnMainActivity();
+            finish();
+        }
+    }
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -110,66 +121,46 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         btLogOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainFragment.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                finish();
 
-//                userAccount = tvUsername.getText().toString();
-//                password = tvPassword.getText().toString();
-////                Toast.makeText(LoginActivity.this, SharedPreUtils.getString(LoginActivity.this, Constants.SP_IP),Toast.LENGTH_LONG).show();
-//                mPresenter.login(userAccount, password);
+                userAccount = tvUsername.getText().toString();
+                password = tvPassword.getText().toString();
+                mPresenter.login(userAccount, password);
+
             }
         });
     }
 
-    @Override
-    public void setPresenter(LoginContract.Presenter presenter) {
-        this.mPresenter = presenter;
-    }
 
-    @Override
-    public void showMessage(String message) {
-        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //在系统配置成功后再次获取IP地址
-        mPresenter = new LoginPresenterImpl(LoginActivity.this, this);
-        if(SharedPreUtils.getBoolean(LoginActivity.this, Constants.SP_LOGIN_IS_LOG_IN)){
-            returnMainActivity();
-            finish();
-        }
-    }
 
+    /**
+     * 判断是否登录成功
+     * @param value
+     */
     @Override
-    public void loginSuccess(UserLoginEntity value) {
-//        Toast.makeText(LoginActivity.this,value.getStatusCode()+"/"+value.getStatusMessage());
+    public void loginSuccess(Base value) {
         //保存用户缓存
         SharedPreUtils.putString(LoginActivity.this, Constants.SP_LOGIN_ACCOUNT, userAccount);
         SharedPreUtils.putString(LoginActivity.this, Constants.SP_LOGIN_PASSWORD, password);
         SharedPreUtils.putBoolean(LoginActivity.this, Constants.SP_LOGIN_IS_LOG_IN, true);
-        SharedPreUtils.putString(LoginActivity.this, Constants.MPUSH_IP, value.getData().getMpushIp());
-        SharedPreUtils.putString(LoginActivity.this, Constants.MPUSH_PORT,value.getData().getMpushPort());
-        SharedPreUtils.putString(LoginActivity.this, Constants.PHOTO_SERVER_IP,value.getData().getPhotoServerIp());
-        SharedPreUtils.putString(LoginActivity.this, Constants.PHOTO_SERVER_PORT,value.getData().getPhotoServerPort());
 
-        mPresenter.getUserInfo(userAccount);
+        mPresenter.getUserInfos(SharedPreUtils.getString(LoginActivity.this, Constants.SP_LOGIN_ACCOUNT));
     }
 
+    /**
+     * 获取登录用户信息
+     * @param value
+     */
     @Override
-    public void getUserInfo(UserInfoEntity value) {
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_COMPANY_ID,value.getData().getCompanyId());
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_COMPANY_NAME,value.getData().getCompanyName());
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_USER_ID,value.getData().getUserId());
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_USER_NAME,value.getData().getUserName());
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_USER_TYPE,value.getData().getUserType());
-        SharedPreUtils.putString(this, Constants.SP_LOGIN_USER_PORTRAIT,value.getData().getUserPortrait());
+    public void getUserInfos(UserInfoEntity value) {
+
+        SharedPreUtils.putString(this, Constants.SP_LOGINER_ID,value.getData().getUserId());
+        SharedPreUtils.putString(this, Constants.SP_LOGINER_NAME,value.getData().getName());
+        SharedPreUtils.putString(this, Constants.SP_LOGINER_POSITION,value.getData().getPosition());
+        SharedPreUtils.putString(this, Constants.SP_LOGINER_OFFICE_ID,value.getData().getOfficeId());
+        SharedPreUtils.putString(this, Constants.SP_LOGINER_OFFICE_NAME,value.getData().getOfficeName());
 
         returnMainActivity();
-        finish();
 
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -179,10 +170,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
      */
     private void returnMainActivity() {
         //跳转到MainActivity界面
-      //  Intent intent = new Intent(this, MainFragment.class);
+        Intent intent = new Intent(this, MainFragment.class);
         //跳转到的activity若已在栈中存在，则将其上的activity都销掉
-     //   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-     //   startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setPresenter(LoginContract.Presenter presenter) {
+        this.mPresenter = presenter;
+    }
+
 }

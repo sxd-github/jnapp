@@ -12,4 +12,12 @@
 
     <color name="btn_bottom_tv_gray">#969696</color>
     <color name="camera_pop_normal">#5DB8FE</color>
+    <color name="camera_add_press">#1E90FF</color>
+
+    <color name="dark_blue">#4F94CD</color>
+
+    <color name="ocean_blue">#0097a7</color>
+
+    <color name="light_green">#11cd6e</color>
+    <color name="green">#3CB371</color>
 </resources>

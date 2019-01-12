@@ -55,7 +55,7 @@ public class TaskFragment extends Fragment {
         }
         List<Fragment> fragments = new ArrayList<>();
 
-        fragments.add(new ToDoTaskFragment());
+        fragments.add(new ToDoTaskActivity());
         fragments.add(new PublishedTaskActivity());
 
 

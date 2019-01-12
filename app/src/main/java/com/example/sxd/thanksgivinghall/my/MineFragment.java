@@ -27,6 +27,7 @@ import com.example.sxd.thanksgivinghall.bean.Constants;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.base.BaseFragment;
 import com.example.sxd.thanksgivinghall.bean.Model;
+import com.example.sxd.thanksgivinghall.login.ChangePwActivity;
 import com.example.sxd.thanksgivinghall.login.LoginActivity;
 import com.example.sxd.thanksgivinghall.adapter.HomeAdapter;
 import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
@@ -66,9 +67,9 @@ public class MineFragment extends BaseFragment {
     private List<Model> datas;
     private HomeAdapter adapter;
     private boolean mIsExit;
-    private int[] icons = {R.mipmap.ic_personal_center_setting, R.mipmap.ic_personal_center_update,
+    private int[] icons = {R.mipmap.ic_change_pw, R.mipmap.ic_personal_center_update,
             R.mipmap.ic_personal_center_exit};
-    private String[] title = {"设置", "自动更新", "注销登录"};
+    private String[] title = {"修改密码", "自动更新", "注销登录"};
 
     CheckUpdateInfo mCheckUpdateInfo;
     ForceUpdateDialog mForceUpdateDialog;
@@ -85,7 +86,10 @@ public class MineFragment extends BaseFragment {
         tvVersion = view.findViewById(R.id.tv_version);
         mGoneView = view.findViewById(R.id.gone_view);
         recyclerView = view.findViewById(R.id.recycler_view);
+
+        //获取用户信息展示
         getUserInfo();
+        //界面布局
         initValue();
 
         return view;
@@ -118,8 +122,8 @@ public class MineFragment extends BaseFragment {
                 Intent intent = new Intent();
                 switch (position) {
                     case 0:
-                      //  intent.setClass(getActivity(), SettingPicActivity.class);
-                     //   startActivity(intent);
+                        intent.setClass(getActivity(), ChangePwActivity.class);
+                        startActivity(intent);
                         break;
                     case 1:
                         initUpdateata();
@@ -134,8 +138,8 @@ public class MineFragment extends BaseFragment {
     }
 
     public void getUserInfo() {
-        tvAccount.setText(SharedPreUtils.getString(getActivity(), Constants.SP_LOGIN_USER_NAME));
-        tvCompany.setText(SharedPreUtils.getString(getActivity(), Constants.SP_LOGIN_COMPANY_NAME));
+        tvAccount.setText(SharedPreUtils.getString(getActivity(), Constants.SP_LOGINER_NAME));
+        tvCompany.setText(SharedPreUtils.getString(getActivity(), Constants.SP_LOGINER_OFFICE_NAME));
         Glide.with(this).load(SharedPreUtils.getString(getActivity(), Constants.SP_LOGIN_USER_PORTRAIT)).into(tvImg);
     }
 
@@ -143,6 +147,9 @@ public class MineFragment extends BaseFragment {
         return getActivity();
     }
 
+    /**
+     * 软件更新
+     */
     private void initUpdateata() {
         String updateUrl = "http://updateapp.senterxljk.com.cn:8889/update/senterxj_update_2_0.json";
         if (!getResources().getConfiguration().locale.getCountry().equals("CN")) {

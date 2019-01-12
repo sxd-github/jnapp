@@ -1,68 +1,35 @@
 package com.example.sxd.thanksgivinghall.bean;
 
 /**
+ * 获取登录用户信息
  * Created by sxd on 2018/2/2.
  */
 public class UserInfoEntity {
-    private String statusCode;
-    private String statusMessage;
     private String success;
-    public data data;
-    public class data {
-        private String userQQ;
-        private Integer userSex;
-        private String userWeChat;
-        private String companyName;
-        private String remark;
-        private String userName;
-        private String userId;
-        private String organNmae;
-        private String companyId;
-        private String userPortrait;
-        private String userMobile;
-        private String userAccount;
-        private String organId;
-        private String userEmail;
-        private String userType;
+    private String statusMessage;
+    private Data data;
+    public class Data {
+        private String officeId;  //部门编号
+        private String officeName;  //部门名称
+        private String userName; //账号
+        private String name;      //姓名
+        private String position;  // 职务
+        private String userId;    // 用户ID
 
-        public String getUserQQ() {
-            return userQQ;
+        public String getOfficeId() {
+            return officeId;
         }
 
-        public void setUserQQ(String userQQ) {
-            this.userQQ = userQQ;
+        public void setOfficeId(String officeId) {
+            this.officeId = officeId;
         }
 
-        public Integer getUserSex() {
-            return userSex;
+        public String getOfficeName() {
+            return officeName;
         }
 
-        public void setUserSex(Integer userSex) {
-            this.userSex = userSex;
-        }
-
-        public String getUserWeChat() {
-            return userWeChat;
-        }
-
-        public void setUserWeChat(String userWeChat) {
-            this.userWeChat = userWeChat;
-        }
-
-        public String getCompanyName() {
-            return companyName;
-        }
-
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
+        public void setOfficeName(String officeName) {
+            this.officeName = officeName;
         }
 
         public String getUserName() {
@@ -73,6 +40,22 @@ public class UserInfoEntity {
             this.userName = userName;
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public void setPosition(String position) {
+            this.position = position;
+        }
+
         public String getUserId() {
             return userId;
         }
@@ -80,86 +63,6 @@ public class UserInfoEntity {
         public void setUserId(String userId) {
             this.userId = userId;
         }
-
-        public String getOrganNmae() {
-            return organNmae;
-        }
-
-        public void setOrganNmae(String organNmae) {
-            this.organNmae = organNmae;
-        }
-
-        public String getCompanyId() {
-            return companyId;
-        }
-
-        public void setCompanyId(String companyId) {
-            this.companyId = companyId;
-        }
-
-        public String getUserPortrait() {
-            return userPortrait;
-        }
-
-        public void setUserPortrait(String userPortrait) {
-            this.userPortrait = userPortrait;
-        }
-
-        public String getUserMobile() {
-            return userMobile;
-        }
-
-        public void setUserMobile(String userMobile) {
-            this.userMobile = userMobile;
-        }
-
-        public String getUserAccount() {
-            return userAccount;
-        }
-
-        public void setUserAccount(String userAccount) {
-            this.userAccount = userAccount;
-        }
-
-        public String getOrganId() {
-            return organId;
-        }
-
-        public void setOrganId(String organId) {
-            this.organId = organId;
-        }
-
-        public String getUserEmail() {
-            return userEmail;
-        }
-
-        public void setUserEmail(String userEmail) {
-            this.userEmail = userEmail;
-        }
-
-        public String getUserType() {
-            return userType;
-        }
-
-        public void setUserType(String userType) {
-            this.userType = userType;
-        }
-    }
-
-    public String getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public String getStatusMessage() {
-        return statusMessage;
-    }
-
-    public void setStatusMessage(String statusMessage) {
-        this.statusMessage = statusMessage;
     }
 
     public String getSuccess() {
@@ -170,30 +73,28 @@ public class UserInfoEntity {
         this.success = success;
     }
 
-    public UserInfoEntity.data getData() {
+    public String getStatusMessage() {
+        return statusMessage;
+    }
+
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
+    }
+
+    public Data getData() {
         return data;
     }
 
-    public void setData(UserInfoEntity.data data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
-    //定义 输出返回数据 的方法
-    public void show() {
-        System.out.println("QQ："+data.userQQ);
-        System.out.println("性别："+data.userSex);
-        System.out.println("微信："+data.userWeChat);
-        System.out.println("公司名称："+data.companyName);
-        System.out.println("备注："+data.remark);
-        System.out.println("用户姓名："+data.userName);
-        System.out.println("用户id："+data.userId);
-        System.out.println("班组名称："+data.organNmae);
-        System.out.println("公司编号："+data.companyId);
-        System.out.println("用户头像："+data.userPortrait);
-        System.out.println("手机："+data.userMobile);
-        System.out.println("用户账号："+data.userAccount);
-        System.out.println("班组编号："+data.organId);
-        System.out.println("email："+data.userEmail);
-        System.out.println("用户类型："+data.userType);
+    @Override
+    public String toString() {
+        return "UserInfoEntity{" +
+                "success='" + success + '\'' +
+                ", statusMessage='" + statusMessage + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

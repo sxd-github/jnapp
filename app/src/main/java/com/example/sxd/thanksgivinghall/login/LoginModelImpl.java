@@ -2,8 +2,8 @@ package com.example.sxd.thanksgivinghall.login;
 
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.UserInfoEntity;
-import com.example.sxd.thanksgivinghall.bean.UserLoginEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,14 +20,14 @@ public class LoginModelImpl implements LoginContract.Model {
         this.baseUrl = baseUrl;
     }
     @Override
-    public void login(String userAccount, String passward, final ResultListener<UserLoginEntity> result) {
-        Call<UserLoginEntity> call = AppMainService.getLoginService(baseUrl).userLogin(userAccount, passward);
+    public void login(String username, String password, final ResultListener<Base> result) {
+        Call<Base> call = AppMainService.getLoginService(baseUrl).userLogin(username, password);
         //请求开始
         result.onStart();
         //执行操作
-        call.enqueue(new Callback<UserLoginEntity>() {
+        call.enqueue(new Callback<Base>() {
             @Override
-            public void onResponse(Call<UserLoginEntity> call, Response<UserLoginEntity> response) {
+            public void onResponse(Call<Base> call, Response<Base> response) {
                 //请求成功
                 result.onSuccess(response.body());
                 //请求结束
@@ -35,7 +35,7 @@ public class LoginModelImpl implements LoginContract.Model {
             }
 
             @Override
-            public void onFailure(Call<UserLoginEntity> call, Throwable t) {
+            public void onFailure(Call<Base> call, Throwable t) {
                 //请求失败
                 result.onFailure(t.getMessage());
                 //请求结束
@@ -45,8 +45,8 @@ public class LoginModelImpl implements LoginContract.Model {
     }
 
     @Override
-    public void userInfo(String userAccount, final ResultListener<UserInfoEntity> result) {
-        Call<UserInfoEntity> call = AppMainService.getLoginService(baseUrl).userInfo(userAccount);
+    public void userInfos(String username, final ResultListener<UserInfoEntity> result) {
+        Call<UserInfoEntity> call = AppMainService.getLoginService(baseUrl).userInfos(username);
         //请求开始
         result.onStart();
         //执行操作
