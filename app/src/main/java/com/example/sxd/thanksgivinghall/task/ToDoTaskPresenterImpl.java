@@ -23,7 +23,7 @@ public class ToDoTaskPresenterImpl extends BasePresenterImpl implements ToDoTask
     }
     @Override
     public void request(String userId,String completeFlag) {
-        this.mModel.request(userId,"0", new ResultListener<ToDoTaskListEntity>() {
+        this.mModel.request(userId,completeFlag, new ResultListener<ToDoTaskListEntity>() {
             @Override
             public void onStart() {
             }

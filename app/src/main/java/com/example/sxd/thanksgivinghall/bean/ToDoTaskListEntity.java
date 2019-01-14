@@ -11,18 +11,18 @@ public class ToDoTaskListEntity {
     private String statusMessage;
     private List<Data> data;
     public class Data{
-        private String id;          //任务id
+        private String recordId;          //任务id
         private String title;          //任务标题
         private String forwardFlag;     //是否为转发
-        private String senduser; //发送人
+        private String sendUser; //发送人
         private String sendDate;      // 发送时间
 
-        public String getId() {
-            return id;
+        public String getRecordId() {
+            return recordId;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setRecordId(String recordId) {
+            this.recordId = recordId;
         }
 
         public String getTitle() {
@@ -41,12 +41,12 @@ public class ToDoTaskListEntity {
             this.forwardFlag = forwardFlag;
         }
 
-        public String getSenduser() {
-            return senduser;
+        public String getSendUser() {
+            return sendUser;
         }
 
-        public void setSenduser(String senduser) {
-            this.senduser = senduser;
+        public void setSendUser(String sendUser) {
+            this.sendUser = sendUser;
         }
 
         public String getSendDate() {

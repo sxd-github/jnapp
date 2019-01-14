@@ -80,7 +80,7 @@ public class BasesActivity extends BaseActivity implements BasesContract.View{
         final List<Node> allNodes = mAdapter.getAllNodes();
         for (int i = 0; i < allNodes.size(); i++) {
             if (allNodes.get(i).isChecked()){
-                ids.append(allNodes.get(i).getUserId() + ",");
+                ids.append(allNodes.get(i).getId() + ",");
                 names.append(allNodes.get(i).getName() + ",");
 
             }

@@ -8,6 +8,18 @@ public class Base {
     private String statusMessage;
     private String success;
 
+    private Data data;
+    public class Data{
+
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
 
     public String getStatusMessage() {
         return statusMessage;
@@ -30,6 +42,7 @@ public class Base {
         return "Base{" +
                 "statusMessage='" + statusMessage + '\'' +
                 ", success='" + success + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

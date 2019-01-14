@@ -2,8 +2,10 @@ package com.example.sxd.thanksgivinghall.task;
 
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.ToDoTaskListEntity;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,7 +22,7 @@ public class ToDoTaskModelImpl implements ToDoTaskContract.Model{
     }
     @Override
     public void request(String userId, String completeFlag,final ResultListener<ToDoTaskListEntity> result) {
-        Call<ToDoTaskListEntity> call = AppMainService.getTaskService(baseUrl).selfLReceList(userId,"0");
+        Call<ToDoTaskListEntity> call = AppMainService.getTaskService(baseUrl).selfLReceList(userId,completeFlag);
         //请求开始
         result.onStart();
         //执行操作

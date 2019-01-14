@@ -38,7 +38,7 @@ public class ToDoTaskListAdapter extends BaseQuickAdapter<ToDoTaskListEntity.Dat
     protected void convert(BaseViewHolder helper, ToDoTaskListEntity.Data item) {
 
         helper.setText(R.id.notice_title,item.getTitle())
-                .setText(R.id.sender,"发布人："+item.getSenduser())
+                .setText(R.id.sender,"发布人："+item.getSendUser())
                 .setText(R.id.send_date,"日期："+item.getSendDate())
                 .setImageResource(R.id.iv_icon,R.mipmap.task)//设置任务的图片
                 .addOnClickListener(R.id.iv_zhuanfa);

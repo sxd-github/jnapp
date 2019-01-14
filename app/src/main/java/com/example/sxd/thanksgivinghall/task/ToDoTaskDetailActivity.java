@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.adapter.ToDoTaskReplyListAdapter;
 import com.example.sxd.thanksgivinghall.base.BaseActivity;
+import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.Constants;
 import com.example.sxd.thanksgivinghall.bean.ToDoTaskDetailEntity;
 import com.example.sxd.thanksgivinghall.treelist.officeUser.BasesActivity;
@@ -44,6 +45,7 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
     private int mCurrentCounter = 1;
     private int TOTAL_COUNTER = 1;
     ToDoTaskDetailContract.Presenter mPresenter;
+    String title, content,files, sendUserId,receUserIds;
     String recordId;
 
     @Override
@@ -67,14 +69,16 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
                 finish();
                 break;
             case R.id.bt_ongoing:
-                Intent intent  = new Intent(this,ReplyTaskActivity.class);
-                //  intent.putExtra();
-                startActivity(intent);
+                Intent intent1  = new Intent(this,ReplyTaskActivity.class);
+                intent1.putExtra("recordId",recordId);
+                intent1.putExtra("replyFlag","0");
+                startActivity(intent1);
                 break;
             case R.id.bt_cannotdo:
-                Intent intent1  = new Intent(this,ReplyTaskActivity.class);
-                //  intent.putExtra();
-                startActivity(intent1);
+                Intent intent2  = new Intent(this,ReplyTaskActivity.class);
+                intent2.putExtra("recordId",recordId);
+                intent2.putExtra("replyFlag","2");
+                startActivity(intent2);
                 break;
         }
     }
@@ -83,7 +87,21 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
     protected void setRightTitleOnClick(View v) {
         Intent intent = new Intent(getApplicationContext(),BasesActivity.class);
         startActivityForResult(intent,2);
+
+        title = tv_title.getText().toString();
+        content = tv_content.getText().toString();
+        files ="";
+        sendUserId = SharedPreUtils.getString(this, Constants.SP_LOGINER_ID);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==2 && resultCode==1){
+            receUserIds = data.getStringExtra("receUserIds");
+            mPresenter.forward(title,content,files,sendUserId,receUserIds,"1");
+        }
+    }
+
 
 
     public void initData() {
@@ -113,7 +131,7 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
         TOTAL_COUNTER = value.getData().getReplyList().size();
         if (TOTAL_COUNTER == 0) {
             rvReplyList.setAdapter(null);
-            Toast.makeText(this,"暂无任何设备",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this,"暂无任何回复记录",Toast.LENGTH_SHORT).show();
             return;
         }
         else {
@@ -124,11 +142,7 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter mAdapter, View view, int position) {
-                Intent intent = new Intent(ToDoTaskDetailActivity.this,ToDoTaskDetailActivity.class);
-                //   intent.putExtra("id", value.getData().get(position).getId());
-                intent.putExtra("id", "43a3369e91c74fefb8d4d7d243690759");
 
-                startActivity(intent);
             }
         });
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -145,6 +159,11 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
                 }, 800);
             }
         }, rvReplyList);
+    }
+
+    @Override
+    public void forward(Base value) {
+        showMessage("转发成功");
     }
 
     @Override

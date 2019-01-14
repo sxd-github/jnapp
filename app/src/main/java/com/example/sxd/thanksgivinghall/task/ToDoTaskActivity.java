@@ -1,5 +1,6 @@
 package com.example.sxd.thanksgivinghall.task;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class ToDoTaskActivity extends Fragment implements ToDoTaskContract.View{
     ToDoTaskContract.Presenter mPresenter;
     private int mCurrentCounter = 1;
     private int TOTAL_COUNTER = 1;
-    String userId, executeTime;
+    String userId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -109,8 +110,8 @@ public class ToDoTaskActivity extends Fragment implements ToDoTaskContract.View{
             @Override
             public void onItemClick(BaseQuickAdapter mAdapter, View view, int position) {
                 Intent intent = new Intent(getActivity(),ToDoTaskDetailActivity.class);
-                //   intent.putExtra("id", value.getData().get(position).getId());
-                   intent.putExtra("id", "43a3369e91c74fefb8d4d7d243690759");
+                   intent.putExtra("id", value.getData().get(position).getRecordId());
+                  // intent.putExtra("id", "43a3369e91c74fefb8d4d7d243690759");
 
                 startActivity(intent);
             }
