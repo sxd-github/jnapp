@@ -1,27 +1,29 @@
 package com.example.sxd.thanksgivinghall.bean;
 
+import java.util.List;
+
 /**
- * 获取待办任务详情
+ * 获取某一条通知通告详情
  * Created by sxd on 2018/2/2.
  */
-public class TaskReceDetailEntity {
+public class ToDoNotifyDetailEntity {
     private String success;
     private String statusMessage;
     private Data data;
     public class Data{
-        private String file;          //附件
-        private String title;          //任务标题
-        private String forwoadFlag;     //是否为紧急任务
-        private String content;        // 任务内容
-        private String senduser; //发送人
-        private String sendDate;      // 发送时间
+        private String files;          //附件
+        private String title;          //通知通告标题
+        private String urgentFlag;     //是否为紧急通知
+        private String content;        // 通知通告内容
+        private String send_user_name; //发送人
+        private String send_date;      // 发送时间
 
-        public String getFile() {
-            return file;
+        public String getFiles() {
+            return files;
         }
 
-        public void setFile(String file) {
-            this.file = file;
+        public void setFiles(String files) {
+            this.files = files;
         }
 
         public String getTitle() {
@@ -32,12 +34,12 @@ public class TaskReceDetailEntity {
             this.title = title;
         }
 
-        public String getForwoadFlag() {
-            return forwoadFlag;
+        public String getUrgentFlag() {
+            return urgentFlag;
         }
 
-        public void setForwoadFlag(String forwoadFlag) {
-            this.forwoadFlag = forwoadFlag;
+        public void setUrgentFlag(String urgentFlag) {
+            this.urgentFlag = urgentFlag;
         }
 
         public String getContent() {
@@ -48,20 +50,20 @@ public class TaskReceDetailEntity {
             this.content = content;
         }
 
-        public String getSenduser() {
-            return senduser;
+        public String getSend_user_name() {
+            return send_user_name;
         }
 
-        public void setSenduser(String senduser) {
-            this.senduser = senduser;
+        public void setSend_user_name(String send_user_name) {
+            this.send_user_name = send_user_name;
         }
 
-        public String getSendDate() {
-            return sendDate;
+        public String getSend_date() {
+            return send_date;
         }
 
-        public void setSendDate(String sendDate) {
-            this.sendDate = sendDate;
+        public void setSend_date(String send_date) {
+            this.send_date = send_date;
         }
     }
 
@@ -91,7 +93,7 @@ public class TaskReceDetailEntity {
 
     @Override
     public String toString() {
-        return "TaskReceDetailEntity{" +
+        return "ToDoNotifyDetailEntity{" +
                 "success='" + success + '\'' +
                 ", statusMessage='" + statusMessage + '\'' +
                 ", data=" + data +

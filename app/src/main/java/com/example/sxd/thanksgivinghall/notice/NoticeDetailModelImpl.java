@@ -2,9 +2,7 @@ package com.example.sxd.thanksgivinghall.notice;
 
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
-import com.example.sxd.thanksgivinghall.bean.BasicEntity;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyDetailEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,14 +19,14 @@ public class NoticeDetailModelImpl implements NoticeDetailContract.Model{
         this.baseUrl = baseUrl;
     }
     @Override
-    public void request(String id, final ResultListener<NotifyDetailEntity> result) {
-        Call<NotifyDetailEntity> call = AppMainService.getNotifyService(baseUrl).notifyDetail(id);
+    public void request(String id, final ResultListener<ToDoNotifyDetailEntity> result) {
+        Call<ToDoNotifyDetailEntity> call = AppMainService.getNotifyService(baseUrl).notifyDetail(id);
         //请求开始
         result.onStart();
         //执行操作
-        call.enqueue(new Callback<NotifyDetailEntity>() {
+        call.enqueue(new Callback<ToDoNotifyDetailEntity>() {
             @Override
-            public void onResponse(Call<NotifyDetailEntity> call, Response<NotifyDetailEntity> response) {
+            public void onResponse(Call<ToDoNotifyDetailEntity> call, Response<ToDoNotifyDetailEntity> response) {
                 //请求成功
                 result.onSuccess(response.body());
                 //请求结束
@@ -36,7 +34,7 @@ public class NoticeDetailModelImpl implements NoticeDetailContract.Model{
             }
 
             @Override
-            public void onFailure(Call<NotifyDetailEntity> call, Throwable t) {
+            public void onFailure(Call<ToDoNotifyDetailEntity> call, Throwable t) {
                 //请求失败
                 result.onFailure(t.getMessage());
                 //请求结束

@@ -72,7 +72,7 @@ public class TaskAddActivity extends BaseActivity implements TaskAddContract.Vie
                         urgentFlag ="0";
                         break;
                     case R.id.rb_urgent:
-                        urgentFlag ="1";
+                        urgentFlag ="a";
                         break;
                 }
             }

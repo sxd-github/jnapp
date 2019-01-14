@@ -1,8 +1,9 @@
-package com.example.sxd.thanksgivinghall.task;
+package com.example.sxd.thanksgivinghall.treelist.officeUser;
 
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
+import com.example.sxd.thanksgivinghall.bean.OfficeUserEntity;
+import com.example.sxd.thanksgivinghall.bean.UserEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -12,21 +13,22 @@ import retrofit2.Response;
  * Created by Administrator on 2018/3/13.
  */
 
-public class TaskDetailModelImpl implements TaskDetailContract.Model{
+public class BasesModelImpl implements BasesContract.Model {
     String baseUrl = "";
 
-    public TaskDetailModelImpl(String baseUrl){
+    public BasesModelImpl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
+
     @Override
-    public void request(String id, final ResultListener<NotifyDetailEntity> result) {
-        Call<NotifyDetailEntity> call = AppMainService.getNotifyService(baseUrl).notifyDetail(id);
+    public void userInfos(String id,final ResultListener<UserEntity> result) {
+        Call<UserEntity> call = AppMainService.getOfficeUserService(baseUrl).getUserByOffice(id);
         //请求开始
         result.onStart();
         //执行操作
-        call.enqueue(new Callback<NotifyDetailEntity>() {
+        call.enqueue(new Callback<UserEntity>() {
             @Override
-            public void onResponse(Call<NotifyDetailEntity> call, Response<NotifyDetailEntity> response) {
+            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                 //请求成功
                 result.onSuccess(response.body());
                 //请求结束
@@ -34,7 +36,7 @@ public class TaskDetailModelImpl implements TaskDetailContract.Model{
             }
 
             @Override
-            public void onFailure(Call<NotifyDetailEntity> call, Throwable t) {
+            public void onFailure(Call<UserEntity> call, Throwable t) {
                 //请求失败
                 result.onFailure(t.getMessage());
                 //请求结束
@@ -42,6 +44,5 @@ public class TaskDetailModelImpl implements TaskDetailContract.Model{
             }
         });
     }
-
 
 }

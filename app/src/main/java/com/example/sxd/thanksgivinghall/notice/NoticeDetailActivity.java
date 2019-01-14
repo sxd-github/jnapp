@@ -1,38 +1,17 @@
 package com.example.sxd.thanksgivinghall.notice;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.sxd.thanksgivinghall.R;
-import com.example.sxd.thanksgivinghall.adapter.NotifyReceListAdapter;
 import com.example.sxd.thanksgivinghall.base.BaseActivity;
-import com.example.sxd.thanksgivinghall.bean.BasicEntity;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
-import com.example.sxd.thanksgivinghall.bean.Constants;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
-import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyDetailEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * 待办任务列表
@@ -79,7 +58,7 @@ public class NoticeDetailActivity extends BaseActivity implements NoticeDetailCo
 
 
     @Override
-    public void requestSuccess(final NotifyDetailEntity value) {
+    public void requestSuccess(final ToDoNotifyDetailEntity value) {
         tv_title.setText(value.getData().getTitle());
         tv_content.setText(value.getData().getContent());
         if(value.getData().getUrgentFlag().equals("1")) {

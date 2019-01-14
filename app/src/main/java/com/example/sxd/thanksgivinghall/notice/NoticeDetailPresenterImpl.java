@@ -5,10 +5,7 @@ import android.content.Context;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.base.BasePresenterImpl;
-import com.example.sxd.thanksgivinghall.bean.BasicEntity;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyDetailEntity;
 
 /**
  * Created by Administrator on 2018/3/13.
@@ -26,7 +23,7 @@ public class NoticeDetailPresenterImpl extends BasePresenterImpl implements Noti
     }
     @Override
     public void request(String companyid) {
-        this.mModel.request(companyid, new ResultListener<NotifyDetailEntity>() {
+        this.mModel.request(companyid, new ResultListener<ToDoNotifyDetailEntity>() {
             @Override
             public void onStart() {
             }
@@ -36,7 +33,7 @@ public class NoticeDetailPresenterImpl extends BasePresenterImpl implements Noti
             }
 
             @Override
-            public void onSuccess(NotifyDetailEntity data) {
+            public void onSuccess(ToDoNotifyDetailEntity data) {
                 if (data != null) {
                     if(data.getStatusMessage().equals("ok")) {
                         mView.requestSuccess(data);

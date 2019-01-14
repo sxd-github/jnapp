@@ -3,8 +3,8 @@ package com.example.sxd.thanksgivinghall.api.service;
 import com.example.sxd.thanksgivinghall.bean.Base;
 import com.example.sxd.thanksgivinghall.bean.TaskDetailEntity;
 import com.example.sxd.thanksgivinghall.bean.TaskListEntity;
-import com.example.sxd.thanksgivinghall.bean.TaskReceDetailEntity;
-import com.example.sxd.thanksgivinghall.bean.TaskReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoTaskDetailEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoTaskListEntity;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -28,36 +28,46 @@ public abstract interface TaskService {
     @POST("infc/infcAddTask/addTask")
     Call<Base> addOaTask(@Body RequestBody Body);
 
-    /**
-     * 获取当前用户的待办任务列表
-     * @param userid  当前用户
-     * @return
-     */
-    @GET("infc/infcoaTaskRecord/user_task_list")
-    Call<TaskReceListEntity> selfLReceList(@Query("userid") String userid);
 
     /**
-     * 获取待办任务详情
-     * @param id  任务id
+     * 新增任务回复
+     * @param
      * @return
      */
-    @GET("infc/infcoaTask/task_record_detail")
-    Call<TaskReceDetailEntity> taskReceDetail(@Query("id") String id);
+    @POST("infc/infcAddTask/addTaskReply")
+    Call<Base> addOaTaskReply(@Body RequestBody Body);
+
+    /**
+     * 获取当前用户的待办/已办任务列表
+     * @param userId  当前用户
+     * @param completeFlag  待办、已办标志   '0' 待办，‘1’,已办
+     * @return
+     */
+    @GET("infc/infcOaTaskRecord/user_task_list")
+    Call<ToDoTaskListEntity> selfLReceList(@Query("userId") String userId,@Query("completeFlag") String completeFlag);
+
+    /**
+     * 获取待办/已办任务详情以及回复列表
+     * @param recordId  任务id
+     * @return
+     */
+    @GET("infc/infcOaTask/task_record_detail")
+    Call<ToDoTaskDetailEntity> taskReceDetail(@Query("recordId") String recordId);
 
     /**
      * 获取当前用户已发布的任务列表
-     * @param userid  当前用户
+     * @param userId  当前用户
      * @return
      */
-    @GET("infc/infcoaTask/task_own_list")
-    Call<TaskListEntity> selfList(@Query("userid") String userid);
+    @GET("infc/infcOaTask/task_own_list")
+    Call<TaskListEntity> selfList(@Query("userId") String userId);
 
     /**
-     * 获取当前任务详情以及回复列表
-     * @param id  任务id
+     * 获取已发布任务详情以及接收人的回复列表
+     * @param taskId  任务id
      * @return
      */
-    @GET("infc/infcoaTask/task_reply_detail")
-    Call<TaskDetailEntity> taskDetail(@Query("id") String id);
+    @GET("infc/infcOaTask/task_reply_detail")
+    Call<TaskDetailEntity> taskDetail(@Query("taskId") String taskId);
 
 }

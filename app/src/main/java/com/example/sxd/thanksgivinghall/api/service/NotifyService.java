@@ -1,17 +1,12 @@
 package com.example.sxd.thanksgivinghall.api.service;
 
 import com.example.sxd.thanksgivinghall.bean.Base;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
-import com.example.sxd.thanksgivinghall.bean.OfficeUserEntity;
-
-import java.io.File;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyDetailEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyListEntity;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -33,20 +28,27 @@ public abstract interface NotifyService {
 
 
     /**
-     * 获取当前用户的通知通告列表
-     * @param userid  当前用户id
+     * 获取当前用户接收的通知通告列表
+     * @param userId  当前用户id
      * @return
      */
-    @GET("infc/infcoaNotify/selfList")
-    Call<NotifyReceListEntity> selfList(@Query("userid") String userid);
+    @GET("infc/infcOaNotify/selfList")
+    Call<ToDoNotifyListEntity> selfList(@Query("userId") String userId);
 
     /**
      * 获取通知通告详情
-     * @param id  通知通告id
+     * @param notifyId  通知通告id
      * @return
      */
-    @GET("infc/infcoaNotify/oanotify_detail")
-    Call<NotifyDetailEntity> notifyDetail(@Query("id") String id);
+    @GET("infc/infcOaNotify/oanotify_detail")
+    Call<ToDoNotifyDetailEntity> notifyDetail(@Query("notifyId") String notifyId);
 
 
+    /**
+     * 获取当前用户发布的通知通告列表
+     * @param userId  当前用户id
+     * @return
+     */
+    @GET("infc/infcOaNotify/oanotify_send_list")
+    Call<ToDoNotifyListEntity> sendList(@Query("userId") String userId);
 }

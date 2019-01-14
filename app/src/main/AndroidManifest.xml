@@ -34,9 +34,12 @@
         <activity android:name="com.example.sxd.thanksgivinghall.notice.NoticeAddActivity" />
         <activity android:name="com.example.sxd.thanksgivinghall.notice.NoticeDetailActivity" />
         <activity android:name="com.example.sxd.thanksgivinghall.task.TaskAddActivity" />
-        <activity android:name="com.example.sxd.thanksgivinghall.task.TaskDetailActivity" />
+        <activity android:name="com.example.sxd.thanksgivinghall.task.ToDoTaskDetailActivity" />
 
         <activity android:name="com.example.sxd.thanksgivinghall.treelist.base.BasesActivity" />
+        <activity android:name="com.example.sxd.thanksgivinghall.treelist.officer.BasesActivity" />
+        <activity android:name="com.example.sxd.thanksgivinghall.treelist.officeUser.BasesActivity" />
+        <activity android:name="com.example.sxd.thanksgivinghall.task.ReplyTaskActivity" />
     </application>
 
 </manifest>

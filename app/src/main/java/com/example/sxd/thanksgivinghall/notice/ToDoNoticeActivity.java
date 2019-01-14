@@ -20,10 +20,9 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.sxd.thanksgivinghall.R;
-import com.example.sxd.thanksgivinghall.adapter.NotifyReceListAdapter;
+import com.example.sxd.thanksgivinghall.adapter.ToDoNotifyListAdapter;
 import com.example.sxd.thanksgivinghall.bean.Constants;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyListEntity;
 import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
 
 import butterknife.BindView;
@@ -35,7 +34,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 /**
  * 待办任务列表
  */
-public class NoticeActivity extends Fragment implements NoticeContract.View{
+public class ToDoNoticeActivity extends Fragment implements ToDoNoticeContract.View{
     @BindView(R.id.rv_device_list)
     RecyclerView rvDeviceList;
     @BindView(R.id.swipeLayout)
@@ -44,11 +43,11 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
     FloatingActionButton fab;
     Unbinder unbinder;
 
-    private NotifyReceListAdapter mAdapter;
-    NoticeContract.Presenter mPresenter;
+    private ToDoNotifyListAdapter mAdapter;
+    ToDoNoticeContract.Presenter mPresenter;
     private int mCurrentCounter = 1;
     private int TOTAL_COUNTER = 1;
-    String userid, executeTime;
+    String userId, executeTime;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_notice, container, false);
         unbinder = ButterKnife.bind(this, view);
-        mPresenter = new NoticePresenterImpl(getActivity(), this);
+        mPresenter = new ToDoNoticePresenterImpl(getActivity(), this);
         /**
          * Android 8.0 通知栏的适配
          */
@@ -101,8 +100,8 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
 
 
     public void initData() {
-        userid = SharedPreUtils.getString(getActivity(), Constants.SP_LOGINER_ID);
-        mPresenter.request(userid);
+        userId = SharedPreUtils.getString(getActivity(), Constants.SP_LOGINER_ID);
+        mPresenter.request(userId);
     }
 
 
@@ -119,7 +118,7 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
      * @param value
      */
     @Override
-    public void requestSuccess(final NotifyReceListEntity value) {
+    public void requestSuccess(final ToDoNotifyListEntity value) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvDeviceList.setLayoutManager(layoutManager);
         rvDeviceList.addItemDecoration(new DividerItemDecoration(
@@ -131,7 +130,7 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
             return;
         }
         else {
-            mAdapter = new NotifyReceListAdapter(R.layout.notice_item, value.getData());
+            mAdapter = new ToDoNotifyListAdapter(R.layout.notice_item, value.getData());
             mCurrentCounter = TOTAL_COUNTER;
         }
         rvDeviceList.setAdapter(mAdapter);
@@ -167,7 +166,7 @@ public class NoticeActivity extends Fragment implements NoticeContract.View{
     }
 
     @Override
-    public void setPresenter(NoticeContract.Presenter paramT) {
+    public void setPresenter(ToDoNoticeContract.Presenter paramT) {
 
     }
 }

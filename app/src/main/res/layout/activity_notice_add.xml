@@ -27,7 +27,7 @@
                     android:layout_marginLeft="15sp"
                     android:layout_weight="2"
                     android:gravity="center_vertical"
-                    android:text="标题"
+                    android:text="通知标题"
                     android:textColor="@color/black_text"
                     android:textSize="14sp" />
 
@@ -141,32 +141,41 @@
                 android:layout_height="0.5dp"
                 android:background="@color/divide_line" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="15sp"
+                    android:gravity="center_vertical"
+                    android:text="通知内容"
+                    android:textColor="@color/black_text"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/white">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="50sp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="15sp"
-                        android:layout_weight="2"
-                        android:gravity="center_vertical"
-                        android:text="通知内容"
-                        android:textColor="@color/black_text"
-                        android:textSize="14sp" />
-
                     <EditText
                         android:id="@+id/et_content"
                         android:layout_width="0sp"
-                        android:layout_height="50sp"
+                        android:layout_height="150sp"
+                        android:padding="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_gravity="center"
-                        android:layout_weight="5"
-                        android:background="@null"
-                        android:gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:minLines="10"
+                        android:gravity="top"
+                        android:scrollbars="vertical"
+                        android:background="@drawable/order_edt_note_bg"
                         android:textColor="@color/black_text"
                         android:textSize="14sp" />
                 </LinearLayout>

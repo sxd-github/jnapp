@@ -1,10 +1,8 @@
-package com.example.sxd.thanksgivinghall.notice;
+package com.example.sxd.thanksgivinghall.task;
 
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
-import com.example.sxd.thanksgivinghall.bean.BasicEntity;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoTaskListEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,21 +12,21 @@ import retrofit2.Response;
  * Created by Administrator on 2018/3/13.
  */
 
-public class NoticeModelImpl implements NoticeContract.Model{
+public class ToDoTaskModelImpl implements ToDoTaskContract.Model{
     String baseUrl = "";
 
-    public NoticeModelImpl(String baseUrl){
+    public ToDoTaskModelImpl(String baseUrl){
         this.baseUrl = baseUrl;
     }
     @Override
-    public void request(String id, final ResultListener<NotifyReceListEntity> result) {
-        Call<NotifyReceListEntity> call = AppMainService.getNotifyService(baseUrl).selfList(id);
+    public void request(String userId, String completeFlag,final ResultListener<ToDoTaskListEntity> result) {
+        Call<ToDoTaskListEntity> call = AppMainService.getTaskService(baseUrl).selfLReceList(userId,"0");
         //请求开始
         result.onStart();
         //执行操作
-        call.enqueue(new Callback<NotifyReceListEntity>() {
+        call.enqueue(new Callback<ToDoTaskListEntity>() {
             @Override
-            public void onResponse(Call<NotifyReceListEntity> call, Response<NotifyReceListEntity> response) {
+            public void onResponse(Call<ToDoTaskListEntity> call, Response<ToDoTaskListEntity> response) {
                 //请求成功
                 result.onSuccess(response.body());
                 //请求结束
@@ -36,7 +34,7 @@ public class NoticeModelImpl implements NoticeContract.Model{
             }
 
             @Override
-            public void onFailure(Call<NotifyReceListEntity> call, Throwable t) {
+            public void onFailure(Call<ToDoTaskListEntity> call, Throwable t) {
                 //请求失败
                 result.onFailure(t.getMessage());
                 //请求结束

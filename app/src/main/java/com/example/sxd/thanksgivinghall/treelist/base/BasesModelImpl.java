@@ -3,6 +3,7 @@ package com.example.sxd.thanksgivinghall.treelist.base;
 import com.example.sxd.thanksgivinghall.api.AppMainService;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.bean.OfficeUserEntity;
+import com.example.sxd.thanksgivinghall.bean.UserEntity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,4 +44,5 @@ public class BasesModelImpl implements BasesContract.Model {
             }
         });
     }
+
 }

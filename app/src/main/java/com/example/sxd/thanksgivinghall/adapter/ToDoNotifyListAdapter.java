@@ -13,10 +13,9 @@ import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 import com.example.sxd.thanksgivinghall.R;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyListEntity;
 
 import java.util.List;
 
@@ -26,16 +25,16 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * Created by 160905 on 2018/2/3.
  */
 
-public class NotifyReceListAdapter extends BaseQuickAdapter<NotifyReceListEntity.Data, BaseViewHolder> {
+public class ToDoNotifyListAdapter extends BaseQuickAdapter<ToDoNotifyListEntity.Data, BaseViewHolder> {
 
-    private NotifyReceListAdapter myAdapter;
+    private ToDoNotifyListAdapter myAdapter;
 
-    public NotifyReceListAdapter(@LayoutRes int layoutResId, @Nullable List<NotifyReceListEntity.Data> data) {
+    public ToDoNotifyListAdapter(@LayoutRes int layoutResId, @Nullable List<ToDoNotifyListEntity.Data> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, NotifyReceListEntity.Data item) {
+    protected void convert(BaseViewHolder helper, ToDoNotifyListEntity.Data item) {
 
         helper.setText(R.id.notice_title,item.getTitle())
                 .setText(R.id.sender,"发布人："+item.getSend_user_name())

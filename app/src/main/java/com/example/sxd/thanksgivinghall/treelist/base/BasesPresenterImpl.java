@@ -6,6 +6,7 @@ import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.base.BasePresenterImpl;
 import com.example.sxd.thanksgivinghall.bean.OfficeUserEntity;
+import com.example.sxd.thanksgivinghall.bean.UserEntity;
 
 /**
  * Created by Administrator on 2018/3/13.

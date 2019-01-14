@@ -5,25 +5,25 @@ import android.content.Context;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.base.BasePresenterImpl;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoTaskDetailEntity;
 
 /**
  * Created by Administrator on 2018/3/13.
  */
 
-public class TaskDetailPresenterImpl extends BasePresenterImpl implements TaskDetailContract.Presenter{
-    private TaskDetailContract.View mView;
-    private TaskDetailContract.Model mModel;
+public class ToDoTaskDetailPresenterImpl extends BasePresenterImpl implements ToDoTaskDetailContract.Presenter{
+    private ToDoTaskDetailContract.View mView;
+    private ToDoTaskDetailContract.Model mModel;
     private Context context;
 
-    public TaskDetailPresenterImpl(Context context, TaskDetailContract.View mView) {
+    public ToDoTaskDetailPresenterImpl(Context context, ToDoTaskDetailContract.View mView) {
         this.mView = mView;
         this.context = context;
-        mModel = new TaskDetailModelImpl(getBaseUrl(context));
+        mModel = new ToDoTaskDetailModelImpl(getBaseUrl(context));
     }
     @Override
-    public void request(String companyid) {
-        this.mModel.request(companyid, new ResultListener<NotifyDetailEntity>() {
+    public void request(String recordId) {
+        this.mModel.request(recordId, new ResultListener<ToDoTaskDetailEntity>() {
             @Override
             public void onStart() {
             }
@@ -33,7 +33,7 @@ public class TaskDetailPresenterImpl extends BasePresenterImpl implements TaskDe
             }
 
             @Override
-            public void onSuccess(NotifyDetailEntity data) {
+            public void onSuccess(ToDoTaskDetailEntity data) {
                 if (data != null) {
                     if(data.getStatusMessage().equals("ok")) {
                         mView.requestSuccess(data);
@@ -55,7 +55,7 @@ public class TaskDetailPresenterImpl extends BasePresenterImpl implements TaskDe
 
 
     @Override
-    public void attachView(TaskDetailContract.View paramT) {
+    public void attachView(ToDoTaskDetailContract.View paramT) {
 
     }
 

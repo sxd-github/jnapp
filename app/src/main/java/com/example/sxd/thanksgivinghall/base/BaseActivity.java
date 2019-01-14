@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.example.sxd.thanksgivinghall.R;
 
 /**
- * Created by sxd on 2018/1/30.
+ * Created by sxd on 2018/a/30.
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

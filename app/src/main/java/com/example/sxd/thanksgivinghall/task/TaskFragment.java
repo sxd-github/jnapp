@@ -23,7 +23,7 @@ public class TaskFragment extends Fragment {
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     private TabLayout mTabLayout;
-    Integer size = 2;
+    Integer size = 3;
 
     Unbinder unbinder;
     @Override
@@ -48,6 +48,7 @@ public class TaskFragment extends Fragment {
         List<String> titles = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             titles.add("待办任务");
+            titles.add("已办任务");
             titles.add("已发布任务");
         }
         for (int i = 0; i < size; i++) {
@@ -56,6 +57,7 @@ public class TaskFragment extends Fragment {
         List<Fragment> fragments = new ArrayList<>();
 
         fragments.add(new ToDoTaskActivity());
+        fragments.add(new FinishedTaskActivity());
         fragments.add(new PublishedTaskActivity());
 
 

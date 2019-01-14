@@ -1,5 +1,6 @@
 package com.example.sxd.thanksgivinghall.treelist.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,9 +16,12 @@ import android.widget.Toast;
 
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.base.BaseActivity;
+import com.example.sxd.thanksgivinghall.bean.Constants;
 import com.example.sxd.thanksgivinghall.bean.OfficeUserEntity;
+import com.example.sxd.thanksgivinghall.bean.UserEntity;
 import com.example.sxd.thanksgivinghall.notice.NoticeAddActivity;
 import com.example.sxd.thanksgivinghall.treelist.adapter.SimpleTreeRecyclerAdapter;
+import com.example.sxd.thanksgivinghall.utils.SharedPreUtils;
 import com.multilevel.treelist.Node;
 import com.multilevel.treelist.TreeRecyclerAdapter;
 

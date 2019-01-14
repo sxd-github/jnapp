@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.sxd.thanksgivinghall.my.MineFragment;
 import com.example.sxd.thanksgivinghall.adapter.FragAdapter;
-import com.example.sxd.thanksgivinghall.notice.NoticeActivity;
+import com.example.sxd.thanksgivinghall.notice.ToDoNoticeActivity;
 import com.example.sxd.thanksgivinghall.task.TaskFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarTab;
@@ -145,7 +145,7 @@ public class MainFragment extends FragmentActivity{
      */
     private void InitFragment() {
         fragmentList = new ArrayList<Fragment>();
-        fragmentList.add(new NoticeActivity());
+        fragmentList.add(new ToDoNoticeActivity());
         fragmentList.add(new TaskFragment());
         fragmentList.add(new MineFragment());
         fragmentManager = getSupportFragmentManager();

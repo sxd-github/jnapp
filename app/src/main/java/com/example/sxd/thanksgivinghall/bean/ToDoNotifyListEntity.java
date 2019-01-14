@@ -3,19 +3,19 @@ package com.example.sxd.thanksgivinghall.bean;
 import java.util.List;
 
 /**
- * 获取当前用户的待办任务列表
+ * 获取当前用户接收的通知通告列表
  * Created by sxd on 2018/2/2.
  */
-public class TaskReceListEntity {
+public class ToDoNotifyListEntity {
     private String success;
     private String statusMessage;
     private List<Data> data;
     public class Data{
-        private String id;          //任务id
-        private String title;          //任务标题
-        private String forwoadFlag;     //是否为转发任务
-        private String senduser; //发送人
-        private String sendDate;      // 发送时间
+        private String id;          //通知通告id
+        private String title;          //通知通告标题
+        private String urgentFlag;     //是否为紧急通知
+        private String send_user_name; //发送人
+        private String send_date;      // 发送时间
 
         public String getId() {
             return id;
@@ -33,28 +33,28 @@ public class TaskReceListEntity {
             this.title = title;
         }
 
-        public String getForwoadFlag() {
-            return forwoadFlag;
+        public String getUrgentFlag() {
+            return urgentFlag;
         }
 
-        public void setForwoadFlag(String forwoadFlag) {
-            this.forwoadFlag = forwoadFlag;
+        public void setUrgentFlag(String urgentFlag) {
+            this.urgentFlag = urgentFlag;
         }
 
-        public String getSenduser() {
-            return senduser;
+        public String getSend_user_name() {
+            return send_user_name;
         }
 
-        public void setSenduser(String senduser) {
-            this.senduser = senduser;
+        public void setSend_user_name(String send_user_name) {
+            this.send_user_name = send_user_name;
         }
 
-        public String getSendDate() {
-            return sendDate;
+        public String getSend_date() {
+            return send_date;
         }
 
-        public void setSendDate(String sendDate) {
-            this.sendDate = sendDate;
+        public void setSend_date(String send_date) {
+            this.send_date = send_date;
         }
     }
 
@@ -84,7 +84,7 @@ public class TaskReceListEntity {
 
     @Override
     public String toString() {
-        return "TaskReceListEntity{" +
+        return "ToDoNotifyListEntity{" +
                 "success='" + success + '\'' +
                 ", statusMessage='" + statusMessage + '\'' +
                 ", data=" + data +

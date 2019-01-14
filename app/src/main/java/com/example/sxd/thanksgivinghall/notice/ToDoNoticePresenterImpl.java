@@ -5,28 +5,25 @@ import android.content.Context;
 import com.example.sxd.thanksgivinghall.R;
 import com.example.sxd.thanksgivinghall.api.ResultListener;
 import com.example.sxd.thanksgivinghall.base.BasePresenterImpl;
-import com.example.sxd.thanksgivinghall.bean.BasicEntity;
-import com.example.sxd.thanksgivinghall.bean.CaptureDeviceInfo;
-import com.example.sxd.thanksgivinghall.bean.NotifyDetailEntity;
-import com.example.sxd.thanksgivinghall.bean.NotifyReceListEntity;
+import com.example.sxd.thanksgivinghall.bean.ToDoNotifyListEntity;
 
 /**
  * Created by Administrator on 2018/3/13.
  */
 
-public class NoticePresenterImpl extends BasePresenterImpl implements NoticeContract.Presenter{
-    private NoticeContract.View mView;
-    private NoticeContract.Model mModel;
+public class ToDoNoticePresenterImpl extends BasePresenterImpl implements ToDoNoticeContract.Presenter{
+    private ToDoNoticeContract.View mView;
+    private ToDoNoticeContract.Model mModel;
     private Context context;
 
-    public NoticePresenterImpl(Context context, NoticeContract.View mView) {
+    public ToDoNoticePresenterImpl(Context context, ToDoNoticeContract.View mView) {
         this.mView = mView;
         this.context = context;
-        mModel = new NoticeModelImpl(getBaseUrl(context));
+        mModel = new ToDoNoticeModelImpl(getBaseUrl(context));
     }
     @Override
-    public void request(String companyid) {
-        this.mModel.request(companyid, new ResultListener<NotifyReceListEntity>() {
+    public void request(String userId) {
+        this.mModel.request(userId, new ResultListener<ToDoNotifyListEntity>() {
             @Override
             public void onStart() {
             }
@@ -36,7 +33,7 @@ public class NoticePresenterImpl extends BasePresenterImpl implements NoticeCont
             }
 
             @Override
-            public void onSuccess(NotifyReceListEntity data) {
+            public void onSuccess(ToDoNotifyListEntity data) {
                 if (data != null) {
                     if(data.getStatusMessage().equals("ok")) {
                         mView.requestSuccess(data);
@@ -58,7 +55,7 @@ public class NoticePresenterImpl extends BasePresenterImpl implements NoticeCont
 
 
     @Override
-    public void attachView(NoticeContract.View paramT) {
+    public void attachView(ToDoNoticeContract.View paramT) {
 
     }
 
