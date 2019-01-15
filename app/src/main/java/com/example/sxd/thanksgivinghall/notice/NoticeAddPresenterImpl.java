@@ -78,7 +78,7 @@ public class NoticeAddPresenterImpl extends BasePresenterImpl implements NoticeA
             @Override
             public void onSuccess(Base data) {
                 if (data != null) {
-                    if(data.getStatusMessage().equals("ok")) {
+                    if(data.getSuccess().equals("true")) {
                         mView.requestSuccess(data);
                     }else{
                         mView.showMessage(data.getStatusMessage());

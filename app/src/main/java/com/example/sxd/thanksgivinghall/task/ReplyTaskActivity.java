@@ -70,7 +70,7 @@ public class ReplyTaskActivity extends BaseActivity implements View.OnTouchListe
 
     @Override
     public void requestSuccess(Base value) {
-        if(value.getSuccess().equals("yes")){
+        if(value.getSuccess().equals("true")){
             showMessage("回复成功");
             finish();
         }

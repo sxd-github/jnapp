@@ -41,10 +41,10 @@ public class PublishedTaskListAdapter extends BaseQuickAdapter<TaskListEntity.Da
             helper.setImageResource(R.id.iv_task,R.mipmap.cannotfinished);
         }
 
-//        if(item.getForwardFlag().equals("a"))  //转发任务
-//        {
-//            helper.setVisible(R.id.iv_isforward,true);
-//        }
+        if(item.getForwardFlag().equals("1"))  //转发任务
+        {
+            helper.setVisible(R.id.iv_isforward,true);
+        }
     }
 }
 

@@ -13,10 +13,10 @@ public class TaskDetailEntity {
     public class Data{
         private String id;          //附件
         private String title;          //任务标题
-        private String forwoadFlag;     //是否为紧急任务
+        private String forwardFlag;     //是否为紧急任务
         private String receNames;     //接收人姓名
         private String sendDate;      // 发送时间
-        private List<Reply_List> reply_list;  //接收人的回复列表
+        private List<Reply_List> replyList;  //接收人的回复列表
 
         public class Reply_List{
             private String date;      // 回复时间
@@ -74,12 +74,12 @@ public class TaskDetailEntity {
             this.title = title;
         }
 
-        public String getForwoadFlag() {
-            return forwoadFlag;
+        public String getForwardFlag() {
+            return forwardFlag;
         }
 
-        public void setForwoadFlag(String forwoadFlag) {
-            this.forwoadFlag = forwoadFlag;
+        public void setForwardFlag(String forwardFlag) {
+            this.forwardFlag = forwardFlag;
         }
 
         public String getReceNames() {
@@ -98,12 +98,12 @@ public class TaskDetailEntity {
             this.sendDate = sendDate;
         }
 
-        public List<Reply_List> getReply_list() {
-            return reply_list;
+        public List<Reply_List> getReplyList() {
+            return replyList;
         }
 
-        public void setReply_list(List<Reply_List> reply_list) {
-            this.reply_list = reply_list;
+        public void setReplyList(List<Reply_List> replyList) {
+            this.replyList = replyList;
         }
     }
 

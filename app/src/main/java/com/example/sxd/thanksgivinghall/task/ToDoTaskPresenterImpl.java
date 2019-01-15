@@ -38,7 +38,7 @@ public class ToDoTaskPresenterImpl extends BasePresenterImpl implements ToDoTask
                     if(data.getStatusMessage().equals("ok")) {
                         mView.requestSuccess(data);
                     }else{
-                        mView.showMessage(data.getStatusMessage());
+                //        mView.showMessage(data.getStatusMessage());
                     }
                 } else {
                     mView.showMessage(context.getString(R.string.login_activity_loading_null));

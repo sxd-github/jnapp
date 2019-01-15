@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 //        actionBar.hide();
 
         //将IP和PORT存入SharedPreferences
-        SharedPreUtils.putString(LoginActivity.this, Constants.SP_IP,"192.168.2.102");
+        SharedPreUtils.putString(LoginActivity.this, Constants.SP_IP,"192.168.2.101");
         SharedPreUtils.putString(LoginActivity.this, Constants.SP_PORT,"8080");
 
         //获取SharedPreferences中存储的登录账号和密码

@@ -14,7 +14,7 @@ public class TaskListEntity {
         private String id;          //任务id
         private String title;          //任务标题
         private String CompleteFlag;     //是否为转发任务
-        private String forwoadFlag;     //任务完成状态
+        private String forwardFlag;     //任务完成状态
         private String sendDate;      // 发送时间
 
         public String getId() {
@@ -41,12 +41,13 @@ public class TaskListEntity {
             CompleteFlag = completeFlag;
         }
 
-        public String getForwoadFlag() {
-            return forwoadFlag;
+
+        public String getForwardFlag() {
+            return forwardFlag;
         }
 
-        public void setForwoadFlag(String forwoadFlag) {
-            this.forwoadFlag = forwoadFlag;
+        public void setForwardFlag(String forwardFlag) {
+            this.forwardFlag = forwardFlag;
         }
 
         public String getSendDate() {

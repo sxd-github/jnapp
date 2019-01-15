@@ -13,7 +13,7 @@ public class ToDoTaskDetailEntity {
     public class Data{
         private String files;          //附件
         private String title;          //任务标题
-        private String forwoadFlag;     //是否为紧急任务
+        private String forwardFlag;     //是否为紧急任务
         private String content;        // 任务内容
         private String sendUser; //发送人
         private String sendDate;      // 发送时间
@@ -75,12 +75,12 @@ public class ToDoTaskDetailEntity {
             this.title = title;
         }
 
-        public String getForwoadFlag() {
-            return forwoadFlag;
+        public String getForwardFlag() {
+            return forwardFlag;
         }
 
-        public void setForwoadFlag(String forwoadFlag) {
-            this.forwoadFlag = forwoadFlag;
+        public void setForwardFlag(String forwardFlag) {
+            this.forwardFlag = forwardFlag;
         }
 
         public String getContent() {

@@ -98,7 +98,7 @@ public class FinishedTaskDetailActivity extends BaseActivity implements ToDoTask
     public void requestSuccess(final ToDoTaskDetailEntity value) {
         tv_title.setText(value.getData().getTitle());
         tv_content.setText(value.getData().getContent());
-        if(value.getData().getForwoadFlag().equals("1")) {
+        if(value.getData().getForwardFlag().equals("1")) {
             tv_isurgent.setText("转发任务");
         }else{
             tv_isurgent.setText("新建任务");

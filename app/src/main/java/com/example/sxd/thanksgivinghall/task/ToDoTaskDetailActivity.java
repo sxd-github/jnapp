@@ -66,19 +66,25 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
     public void click(View v) {
         switch(v.getId()){
             case R.id.bt_finished:
+                Intent intent1 = new Intent(this,ReplyTaskActivity.class);
+                intent1.putExtra("recordId",recordId);
+                intent1.putExtra("replyFlag","1");
+                startActivity(intent1);
                 finish();
                 break;
             case R.id.bt_ongoing:
-                Intent intent1  = new Intent(this,ReplyTaskActivity.class);
-                intent1.putExtra("recordId",recordId);
-                intent1.putExtra("replyFlag","0");
-                startActivity(intent1);
+                Intent intent2 = new Intent(this,ReplyTaskActivity.class);
+                intent2.putExtra("recordId",recordId);
+                intent2.putExtra("replyFlag","0");
+                startActivity(intent2);
+                finish();
                 break;
             case R.id.bt_cannotdo:
-                Intent intent2  = new Intent(this,ReplyTaskActivity.class);
-                intent2.putExtra("recordId",recordId);
-                intent2.putExtra("replyFlag","2");
-                startActivity(intent2);
+                Intent intent3 = new Intent(this,ReplyTaskActivity.class);
+                intent3.putExtra("recordId",recordId);
+                intent3.putExtra("replyFlag","2");
+                startActivity(intent3);
+                finish();
                 break;
         }
     }
@@ -116,7 +122,7 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
     public void requestSuccess(final ToDoTaskDetailEntity value) {
         tv_title.setText(value.getData().getTitle());
         tv_content.setText(value.getData().getContent());
-        if(value.getData().getForwoadFlag().equals("1")) {
+        if(value.getData().getForwardFlag().equals("1")) {
             tv_isurgent.setText("转发任务");
         }else{
             tv_isurgent.setText("新建任务");

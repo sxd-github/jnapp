@@ -98,7 +98,7 @@ public class ToDoTaskActivity extends Fragment implements ToDoTaskContract.View{
         TOTAL_COUNTER = value.getData().size();
         if (TOTAL_COUNTER == 0) {
             rvDeviceList.setAdapter(null);
-            Toast.makeText(getContext(),"暂无任何设备",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"暂无任何任务",Toast.LENGTH_SHORT).show();
             return;
         }
         else {

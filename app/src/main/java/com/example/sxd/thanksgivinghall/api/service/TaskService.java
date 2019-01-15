@@ -43,7 +43,7 @@ public abstract interface TaskService {
      * @param completeFlag  待办、已办标志   '0' 待办，‘1’,已办
      * @return
      */
-    @GET("infc/infcOaTaskRecord/user_task_list")
+    @GET("infc/infcOaTask/tbdTaskList")
     Call<ToDoTaskListEntity> selfLReceList(@Query("userId") String userId,@Query("completeFlag") String completeFlag);
 
     /**
@@ -51,7 +51,7 @@ public abstract interface TaskService {
      * @param recordId  任务id
      * @return
      */
-    @GET("infc/infcOaTask/task_record_detail")
+    @GET("infc/infcOaTask/tbdTaskDetails")
     Call<ToDoTaskDetailEntity> taskReceDetail(@Query("recordId") String recordId);
 
     /**
@@ -59,7 +59,7 @@ public abstract interface TaskService {
      * @param userId  当前用户
      * @return
      */
-    @GET("infc/infcOaTask/task_own_list")
+    @GET("infc/infcOaTask/publishTaskList")
     Call<TaskListEntity> selfList(@Query("userId") String userId);
 
     /**
@@ -67,7 +67,7 @@ public abstract interface TaskService {
      * @param taskId  任务id
      * @return
      */
-    @GET("infc/infcOaTask/task_reply_detail")
+    @GET("infc/infcOaTask/publishTaskDetails")
     Call<TaskDetailEntity> taskDetail(@Query("taskId") String taskId);
 
 }

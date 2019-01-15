@@ -59,7 +59,7 @@ public class ReplyTaskPresenterImpl extends BasePresenterImpl implements ReplyTa
             @Override
             public void onSuccess(Base data) {
                 if (data != null) {
-                    if(data.getStatusMessage().equals("ok")) {
+                    if(data.getSuccess().equals("true")) {
                         mView.requestSuccess(data);
                     }else{
                         mView.showMessage(data.getStatusMessage());

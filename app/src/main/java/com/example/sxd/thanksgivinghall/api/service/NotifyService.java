@@ -40,7 +40,7 @@ public abstract interface NotifyService {
      * @param notifyId  通知通告id
      * @return
      */
-    @GET("infc/infcOaNotify/oanotify_detail")
+    @GET("infc/infcOaNotify/notifyDetails")
     Call<ToDoNotifyDetailEntity> notifyDetail(@Query("notifyId") String notifyId);
 
 
@@ -49,6 +49,6 @@ public abstract interface NotifyService {
      * @param userId  当前用户id
      * @return
      */
-    @GET("infc/infcOaNotify/oanotify_send_list")
+    @GET("infc/infcOaNotify/publishNotifyList")
     Call<ToDoNotifyListEntity> sendList(@Query("userId") String userId);
 }
