@@ -37,7 +37,7 @@ public class ToDoTaskReplyListAdapter extends BaseQuickAdapter<ToDoTaskDetailEnt
     @Override
     protected void convert(BaseViewHolder helper, ToDoTaskDetailEntity.Data.Reply_List item) {
 
-        helper.setText(R.id.reply_name,item.getReceUser())
+        helper.setText(R.id.reply_name,item.getSendUser())
                 .setText(R.id.reply_date,"日期："+item.getReplyDate());
 
         /**

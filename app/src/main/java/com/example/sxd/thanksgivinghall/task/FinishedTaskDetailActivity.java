@@ -59,30 +59,8 @@ public class FinishedTaskDetailActivity extends BaseActivity implements ToDoTask
     }
 
 
-    public void click(View v) {
-        switch(v.getId()){
-            case R.id.bt_finished:
-                finish();
-                break;
-            case R.id.bt_ongoing:
-                Intent intent1  = new Intent(this,ReplyTaskActivity.class);
-                intent1.putExtra("recordId",recordId);
-                intent1.putExtra("replyFlag","0");
-                startActivity(intent1);
-                break;
-            case R.id.bt_cannotdo:
-                Intent intent2  = new Intent(this,ReplyTaskActivity.class);
-                intent2.putExtra("recordId",recordId);
-                intent2.putExtra("replyFlag","2");
-                startActivity(intent2);
-                break;
-        }
-    }
-
     @Override
     protected void setRightTitleOnClick(View v) {
-        Intent intent = new Intent(getApplicationContext(),BasesActivity.class);
-        startActivityForResult(intent,2);
     }
 
 
@@ -124,7 +102,7 @@ public class FinishedTaskDetailActivity extends BaseActivity implements ToDoTask
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter mAdapter, View view, int position) {
-
+                showMessage(value.getData().getReplyList().get(position).getReplyContent());
             }
         });
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {

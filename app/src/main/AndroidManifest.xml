@@ -9,9 +9,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".SplashActivity"
@@ -36,6 +36,7 @@
         <activity android:name="com.example.sxd.thanksgivinghall.task.TaskAddActivity" />
         <activity android:name="com.example.sxd.thanksgivinghall.task.ToDoTaskDetailActivity" />
         <activity android:name="com.example.sxd.thanksgivinghall.task.FinishedTaskDetailActivity" />
+        <activity android:name="com.example.sxd.thanksgivinghall.task.PublishedTaskDetailActivity" />
 
         <activity android:name="com.example.sxd.thanksgivinghall.treelist.base.BasesActivity" />
         <activity android:name="com.example.sxd.thanksgivinghall.treelist.officer.BasesActivity" />

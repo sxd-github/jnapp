@@ -148,7 +148,7 @@ public class ToDoTaskDetailActivity extends BaseActivity implements ToDoTaskDeta
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter mAdapter, View view, int position) {
-
+                showMessage(value.getData().getReplyList().get(position).getReplyContent());
             }
         });
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {

@@ -101,7 +101,7 @@ public class PublishedTaskActivity extends Fragment implements PublishedTaskCont
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter mAdapter, View view, int position) {
-                Intent intent = new Intent(getActivity(),ToDoTaskDetailActivity.class);
+                Intent intent = new Intent(getActivity(),PublishedTaskDetailActivity.class);
                 intent.putExtra("id", value.getData().get(position).getId());
                 startActivity(intent);
             }

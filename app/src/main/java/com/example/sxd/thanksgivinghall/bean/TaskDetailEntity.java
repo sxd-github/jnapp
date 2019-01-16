@@ -11,41 +11,43 @@ public class TaskDetailEntity {
     private String statusMessage;
     private Data data;
     public class Data{
-        private String id;          //附件
+        private String taskId;          //任务id
         private String title;          //任务标题
         private String forwardFlag;     //是否为紧急任务
+        private String files;          //附件
         private String receNames;     //接收人姓名
         private String sendDate;      // 发送时间
+        private String content;      // 发送内容
         private List<Reply_List> replyList;  //接收人的回复列表
 
         public class Reply_List{
-            private String date;      // 回复时间
-            private String ReplyFlag;
-            private String user;
+            private String replyDate;      // 回复时间
+            private String replyFlag;
+            private String sendUser;
             private String content;
 
-            public String getDate() {
-                return date;
+            public String getReplyDate() {
+                return replyDate;
             }
 
-            public void setDate(String date) {
-                this.date = date;
+            public void setReplyDate(String replyDate) {
+                this.replyDate = replyDate;
             }
 
             public String getReplyFlag() {
-                return ReplyFlag;
+                return replyFlag;
             }
 
             public void setReplyFlag(String replyFlag) {
-                ReplyFlag = replyFlag;
+                this.replyFlag = replyFlag;
             }
 
-            public String getUser() {
-                return user;
+            public String getSendUser() {
+                return sendUser;
             }
 
-            public void setUser(String user) {
-                this.user = user;
+            public void setSendUser(String sendUser) {
+                this.sendUser = sendUser;
             }
 
             public String getContent() {
@@ -57,13 +59,12 @@ public class TaskDetailEntity {
             }
         }
 
-
-        public String getId() {
-            return id;
+        public String getTaskId() {
+            return taskId;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setTaskId(String taskId) {
+            this.taskId = taskId;
         }
 
         public String getTitle() {
@@ -96,6 +97,22 @@ public class TaskDetailEntity {
 
         public void setSendDate(String sendDate) {
             this.sendDate = sendDate;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getFiles() {
+            return files;
+        }
+
+        public void setFiles(String files) {
+            this.files = files;
         }
 
         public List<Reply_List> getReplyList() {

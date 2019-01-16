@@ -21,17 +21,17 @@ public class ToDoTaskDetailEntity {
 
         private List<Reply_List> replyList;
         public class Reply_List{
-            private String receUser;
+            private String sendUser;
             private String replyDate;
             private String replyFlag;  //'0' 未完成 '1' 完成 '2' 无法完成
             private String replyContent;
 
-            public String getReceUser() {
-                return receUser;
+            public String getSendUser() {
+                return sendUser;
             }
 
-            public void setReceUser(String receUser) {
-                this.receUser = receUser;
+            public void setSendUser(String sendUser) {
+                this.sendUser = sendUser;
             }
 
             public String getReplyDate() {
